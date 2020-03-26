@@ -1,0 +1,16 @@
+import java.util.Scanner;
+class dz1{
+    public static void main(String[] args) {
+        Scanner inp = new Scanner(System.in);
+            System.out.println("Введите пятизначное число");
+            int a = inp.nextInt();
+            int sum = 0;
+
+            while( a > 0){
+                sum = sum + (a%10);
+                a = a/10;
+            }
+            System.out.println(sum);
+
+        }
+    }

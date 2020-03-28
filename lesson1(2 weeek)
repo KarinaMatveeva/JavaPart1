@@ -54,8 +54,9 @@ public class func {
         }
         int newposl [] = new int[z+1];
         int sum = 0;
+        int v = 0;
         for (int i = left; i <= right ; i++) {
-            int v = 0;
+            
             posled[i]=newposl[v];
             v++;
             sum+=newposl[v];

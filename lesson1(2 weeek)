@@ -1,0 +1,66 @@
+import java.util.Scanner;
+public class func {
+    static Scanner inp = new Scanner(System.in);
+    public static void main(String[] args) {
+
+        System.out.println("Введите число");
+        int chislo = inp.nextInt();
+        System.out.println("сумма цифр = " +sum(chislo));
+        System.out.println("число в обратном порядке : "+zercalo(chislo));
+
+
+
+
+        System.out.println("сумма чисел, входящих в диапозон :" +summaChisel());
+
+    }
+
+    public static int sum(int chislo){
+        int sum = 0;
+        while( chislo != 0){
+            sum = sum + (chislo%10);
+            chislo = chislo/10;
+
+        }
+        return sum;
+    }
+
+    public static int zercalo(int chislo){
+        int c = 0;
+        while( chislo != 0) {
+            c = 10*c + (chislo % 10);
+            chislo = chislo/10;
+        }
+        return c;
+    }
+
+    public static  int summaChisel( ){
+        int z = 0;
+        System.out.println("введите размерность массива");
+        int n = inp.nextInt();
+        System.out.println("введите массив");
+        int [] posled = new int[n];
+        for (int i = 0; i < n ; i++) {
+            posled[i]=inp.nextInt();
+        }
+        System.out.println("введите левую границу диапозона");
+        int left = inp.nextInt();
+        System.out.println("введите правую границу диапозона");
+        int right = inp.nextInt();
+        if(left <= right){
+            z = right - left;
+        } else {
+            System.out.println("вы ввели неправильный диапозон, проверьте правильность границ");
+        }
+        int newposl [] = new int[z+1];
+        int sum = 0;
+        for (int i = left; i <= right ; i++) {
+            int v = 0;
+            posled[i]=newposl[v];
+            v++;
+            sum+=newposl[v];
+        }
+        return sum;
+    }
+
+}

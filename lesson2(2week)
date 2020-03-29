@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class integral {
+    static Scanner inp = new Scanner(System.in);
+    public static double func(double x){
+        return x*x;
+    }
+
+    public static double integralPryamo(double a, double b, double n) {
+        double h = (b - a) / n;//расстояние между двумя точками в нашем разбиении
+
+        double res = 0;
+        for (double x = a; x <= b; x += h) {
+            //рассчитаем площадь текущего прямоугольника
+            double s = func(x) * h;
+            res += s;
+
+        }
+        return res;
+    }
+
+    public static double metodSimpsona( double a, double b, int n){
+        double sum = 0;
+        double sum2 = 0;
+        double [] x = new double[n];
+        double h=(b-a)/n;
+        for(int i=0;i<n;i++){
+            x[i]=a+i*h;
+        }
+        for(int i=1;i<n;i++){
+            sum+=func(x[i]);
+            sum2+=func((x[i-1]+x[i])/2);
+        }
+        return h/6*(func(a)+func(b)+2*sum+4*(sum2+b));
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println("введите нижнюю границу интегрирования :");
+        double a = inp.nextDouble();//нижняя граница интегрирования
+        System.out.println("введите верхнюю границу интегрирования : ");
+        double b = inp.nextDouble();//верхняя граница интегрирования
+        System.out.println("введите желаемое кол-во итераций: ");
+        int n = inp.nextInt();
+
+        int nall = 130;
+        String minus = "-";
+
+        for (int i = 0; i < nall; i++) {
+            System.out.print(minus);
+        }
+
+        System.out.println();
+        int n1 = 4;
+        System.out.printf("%-22s", "НАЗВАНИЕ МЕТОДА");
+        System.out.print("|");
+        System.out.printf("%-20s", "КОЛИЧЕСТВО ИТЕРАЦИЙ");
+        System.out.print("|");
+        System.out.printf("%-53s", "РЕЗУЛЬТАТ ВЫЧИСЛЕНИЯ");
+        System.out.println();
+        for (int i = 0; i < nall; i++) {
+            System.out.print(minus);
+        }
+        System.out.println();
+        System.out.printf("%-22s", "МЕТОД ПРЯМОУГОЛЬНИКОВ");
+        System.out.print("|");
+        System.out.printf("%-20s", n);
+        System.out.print("|");
+        System.out.printf("%-53s", integralPryamo(a,b,n));
+        System.out.println();
+        for (int i = 0; i < nall; i++) {
+            System.out.print(minus);
+        }
+        System.out.println();
+        System.out.printf("%-22s", "МЕТОД СИМПСОНА");
+        System.out.print("|");
+        System.out.printf("%-20s", n);
+        System.out.print("|");
+        System.out.printf("%-53s", metodSimpsona(a,b,n));
+
+    }
+}

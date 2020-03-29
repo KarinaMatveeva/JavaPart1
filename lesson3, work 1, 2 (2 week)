@@ -38,16 +38,13 @@ public class ReferenceType {
 
         System.out.println("введите число, которые вы хотите отыскать");
         int NumberforSearch = inp.nextInt();
-        binary(newArray,NumberforSearch);
-
-
+        binary(newArray,NumberforSearch,0);
+        
     }
 
-    public static void binary(int[] array, int NumberforSearch ){
-
+    public static int binary(int[] array, int NumberforSearch, int mid ){
         int left = 0;
         int right = array.length - 1;
-        int mid;
 
         while( left <= right){
             mid = (right + left)/2;
@@ -60,6 +57,7 @@ public class ReferenceType {
                 break;
             }
         }
+        return mid;
     }
 
 }

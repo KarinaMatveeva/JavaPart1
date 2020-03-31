@@ -1,26 +1,21 @@
 public class stroki {
-    public static char sravnenie(char [] a, char [] b){
-        for (int i = 0; i < a.length ; i++) {
-            for (int j = i; j < a.length ; j++) {
-                if( a[i] < b[j]){
-                    System.out.print(a[i]);
-                    System.out.println(b[j]);
-                }
-                if (a[i] == b[j]){
-                    return 0;
-                }
-                if (a[i] > b[j]){
-                    System.out.print(b[j]);
-                    System.out.println(a[i]);
-                }
-                return 1;
-
+    public static int sravnenie(char [] a, char [] b) {
+        int m = 0;
+        for (int i = 0; i < a.length && i < b.length; i++) {
+            if (a[i] == b [i]){
+                 m = 0;
             }
-
+            if(a[i] < b[i]){
+                m = 1;
+            }
+            if (a[i] > b[i]){
+                m = -1;
+            }
         }
-        return (char)-1;
-
+        System.out.print(m);
+        return m;
     }
+
 
     public static int preobrazovanie(char [] a){
         int b = 0;
@@ -29,27 +24,47 @@ public class stroki {
             System.out.print(b);
         }
         return b;
-
     }
 
-    public static char bykva(char[] str){
-        int max = str[0];
+    public static int bykva(char[] str){
+        int counter = 0;
+        char[] str1 = str;
         for (int i = 0; i < str.length ; i++) {
-            if(str[i] > max){
-                max = str[i];
+            for (int j = i+1; j <str.length ; j++) {
+                if(str1[i] == str1[j]){
+                    System.out.println(str1[j]);
+                    counter++;
+                    break;
+                }
+
             }
 
         }
+        return System.out.println(str1);;
 
     }
 
     public static void main(String[] args) {
-        char [] a = {'a', 'a', 'b'};
-        char [] b = {'a','b','c'};
+        char[] a = {'a', 'b'};
+        char[] b = {'a', 'b'};
         char [] digit = {'5', '6', '8'};
         char [] str = {'a','b','c','a', 'a', 'b'};
-        System.out.println(sravnenie(a,b));
+        int result = sravnenie(a,b);
+        if (result == 0){
+            System.out.print(" = > строки совпадают ");
+        }
+        if (result == -1){
+            System.out.print(" = > строка а в лексикографическом порядке стоит позже строки b");
+        }
+        if (result == 1){
+            System.out.print(" = >  строка b в лексикографическом порядке стоит позже строки a");
+
+        }
+        System.out.println();
         System.out.print("полученное число: ");
         preobrazovanie(digit);
+        System.out.println();
+        System.out.print("повторяющийся символ " +bykva(str));
     }
 }
+

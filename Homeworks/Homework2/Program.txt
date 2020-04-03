@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Program{
+    public static void main(String[] args) {
+        Scanner inp = new Scanner(System.in);
+        System.out.println("введите послед чисел");
+        int number = inp.nextInt();
+        int copyNumber = 0;
+        int proiz = 1;
+        int sumNumber = 0;
+        while (number != -1){
+            copyNumber = number;
+            while (number %10 != 0){
+                int b = number % 10;
+                sumNumber +=b;
+                number /= 10;
+            }
+            if(sumNumber % 2 == 0){
+                    proiz = proiz * copyNumber;
+            }else{
+                sumNumber = 0;
+            }
+            number = inp.nextInt();
+            }
+        System.out.println(proiz);
+
+    }
+
+}

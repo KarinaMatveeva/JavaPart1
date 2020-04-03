@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class Program{
+    static Scanner inp = new Scanner(System.in);
+
+    public static void sort(int array[]) {
+        int min ;
+        int indexmin;
+
+        for(int i = 0; i < array.length; i++) {
+            min = array[i];
+            indexmin = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < min) {
+                    min = array[j];
+                    indexmin = j;
+                }
+            }
+            int temp = array[i];
+            array[i] = min;
+            array[indexmin] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        int [] newArray = {10, -6, 8, 7, 3, -3, 5};
+        System.out.print("сортировка выбором : [");
+        sort(newArray);
+        for (int i = 0; i < newArray.length  ; i++) {
+            if (i == newArray.length - 1) {
+                System.out.print(newArray[i]);
+            }else{
+                System.out.print(+newArray[i] + " , ");
+            }
+        }
+        System.out.print("]");
+        System.out.println();
+
+        System.out.println("введите число, которые вы хотите отыскать");
+        int NumberforSearch = inp.nextInt();
+        binary(newArray,NumberforSearch,0);
+        
+    }
+
+    public static int binary(int[] array, int NumberforSearch, int mid ){
+        int left = 0;
+        int right = array.length - 1;
+
+        while( left <= right){
+            mid = (right + left)/2;
+            if( array[mid] < NumberforSearch){
+                left = mid + 1;
+            } else if( array[mid] > NumberforSearch ){
+                right = mid - 1;
+            } else{
+                System.out.println("Данное число находится в отсортированном массиве под индексом: "+mid);
+                break;
+            }
+        }
+        return mid;
+    }
+
+}

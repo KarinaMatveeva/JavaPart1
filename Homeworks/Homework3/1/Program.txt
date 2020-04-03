@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Program{
+    public static void main(String[] args) {
+        Scanner inp = new Scanner(System.in);
+        System.out.println("Введите размерность массива");
+        int length = inp.nextInt();
+        int [] array = new int [length];
+        System.out.println("Введите элементы массива");
+        for (int i = 0; i < array.length ; i++) {
+            array[i] = inp.nextInt();
+        }
+        int indexMin = 0;
+        int indexMax = 0;
+        int min = array[0];
+        int max = array[0];
+        for (int i = 1; i < array.length ; i++) {
+            if( max < array[i]) {
+                max = array[i];
+                indexMax = i;
+            }
+            if(array[i] < min){
+                min = array[i];
+                indexMin = i;
+            }
+        }
+        array[indexMin]=max;
+        array[indexMax]=min;
+
+        for (int i = 0; i < array.length ; i++) {
+            System.out.println(array[i]);
+
+        }
+
+    }
+}
